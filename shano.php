@@ -2,7 +2,6 @@
 
 
 
-
 $lenghts = array(0, 107, 202, 400, 475);
 
 foreach ($lenghts as $cm) 
