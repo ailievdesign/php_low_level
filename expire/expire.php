@@ -5,7 +5,7 @@
   // $set = '2017-02-02 14:24:00';
   // $set2 = '2018-02-02 14:24:00';
 
-$arr = array("a"=>"2012-02-02 14:24:00", "b"=>"2019-02-01 14:24:00");
+$arr = array("0"=>"2012-02-02 14:24:00", "1"=>"2019-02-01 14:24:00", "2"=>"2039-02-01 14:24:00", "3"=>"2049-02-01 14:24:00");
 
 function expireContent ($arr, $key)
 {
@@ -22,7 +22,7 @@ function expireContent ($arr, $key)
 	}
 }
 
-echo expireContent($arr, "b") . "<br />";
+echo expireContent($arr, "1") . "<br />";
 
 // expired arrays admin view
 
@@ -84,6 +84,28 @@ echo "<pre>" . print_r($arr) ."</pre>";
 <?php
 
 echo implode(" >> ",$arr)."<br>";
+
+
+?>
+
+
+<?php
+
+	$arr = array("0"=>"2012-02-02 14:24:00", "1"=>"2019-02-01 14:24:00", "2"=>"2039-02-01 14:24:00", "3"=>"2049-02-01 14:24:00");
+  	$now = strtotime(date('Y-m-d H:i:s'));
+  	$i = 0;
+  	$i++;
+	$set = strtotime($arr[$i]);
+	
+	if ($set > $now)
+	{
+		
+  	    echo $arr[$i];
+	}
+	else 
+	{
+		echo "f" ."\n";
+	}
 
 
 ?>
