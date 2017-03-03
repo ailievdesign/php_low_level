@@ -1,9 +1,9 @@
 <?php
 // 000 webhost database - VFU-expire 1.0
 
-$connection = mysql_connect('localhost', 'id859927_3xpir3', 'vfuexpire');
+$connection = mysql_connect('localhost', 'root', '');
 
-mysql_select_db("id859927_expire", $connection);
+mysql_select_db("expire", $connection);
 $result = mysql_query("SELECT date_expire FROM expire", $connection);
 
 $now = strtotime(date('Y-m-d H:i:s'));

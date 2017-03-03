@@ -22,8 +22,32 @@ function expireContent ($arr, $key)
 	}
 }
 
-echo expireContent($arr, "1") . "<br />";
+//echo expireContent($arr, "1") . "<br />";
+
+?>
+
+<?php
+$arrr = array("0"=>"2012-02-02 14:24:00", "1"=>"2019-02-01 14:24:00", "2"=>"2006-02-01 14:24:00", "3"=>"2019-02-01 14:24:00", "4"=>"2009-02-01 14:24:00");
 
 
-</body>
-</html>
+
+function array_compare($arrr)
+{
+	$rez = count($arrr);
+	$now = strtotime(date('Y-m-d H:i:s'));
+	for ($i=0; $i<$rez; $i++)
+	{
+		if ($now < strtotime($arrr[$i]))
+		{echo $arrr[$i] . " " . "<br />";
+		echo "\n";
+		}
+		else { echo "<b>" . $arrr[$i] . "</b>" . " " . "<br />";
+		echo "\n";}
+	}
+	
+}
+	
+echo array_compare($arrr);
+
+
+?>
