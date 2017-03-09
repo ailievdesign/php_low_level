@@ -5,24 +5,25 @@
   // $set = '2017-02-02 14:24:00';
   // $set2 = '2018-02-02 14:24:00';
 
-$arr = array("0"=>"2012-02-02 14:24:00", "1"=>"2019-02-01 14:24:00", "2"=>"2039-02-01 14:24:00", "3"=>"2049-02-01 14:24:00");
+$arr = array("0"=>"2012-02-02 14:24:00", "1"=>"2019-02-01 14:24:00", "2"=>"2018-02-01 14:24:00", "3"=>"2017-03-19 10:24:00");
 
 function expireContent ($arr, $key)
 {
 	$now = strtotime(date('Y-m-d H:i:s'));
 	$set = strtotime($arr[$key]);
-
+	
+	// none - expire
 	if ($now > $set)
-	{
-		echo "display: block;";
-	}
-	else 
 	{
 		echo "display: none;";
 	}
+	else 
+	{
+		echo "display: block;";
+	}
 }
 
-//echo expireContent($arr, "1") . "<br />";
+echo expireContent($arr, "0") . "<br />";
 
 ?>
 
@@ -31,23 +32,25 @@ $arrr = array("0"=>"2012-02-02 14:24:00", "1"=>"2019-02-01 14:24:00", "2"=>"2006
 
 
 
-function array_compare($arrr)
+function array_compare($arr)
 {
-	$rez = count($arrr);
+	$rez = count($arr);
 	$now = strtotime(date('Y-m-d H:i:s'));
 	for ($i=0; $i<$rez; $i++)
 	{
-		if ($now < strtotime($arrr[$i]))
-		{echo $arrr[$i] . " " . "<br />";
+		// bold - expire
+		if ($now < strtotime($arr[$i]))
+		{echo $arr[$i] . " " . "<br />";
 		echo "\n";
 		}
-		else { echo "<b>" . $arrr[$i] . "</b>" . " " . "<br />";
-		echo "\n";}
+		else 
+		{ echo "<b>" . $arr[$i] . "</b>" . " " . "<br />";
+		echo "\n";
+		}
 	}
 	
 }
 	
-echo array_compare($arrr);
-
+echo array_compare($arr);
 
 ?>
