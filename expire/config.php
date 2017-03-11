@@ -4,20 +4,31 @@
 $connection = mysql_connect('localhost', 'root', '');
 
 mysql_select_db("expire", $connection);
-$result = mysql_query("SELECT date_expire FROM expire", $connection);
+$result = mysql_query("SELECT * FROM expire", $connection);
  
 $now = strtotime(date('Y-m-d H:i:s'));
 
-mysql_data_seek($result, 2);
+//mysql_data_seek($result, 0);
 
+$numz = mysql_query("SELECT count(*) from expire", $connection);
+$obj = mysql_fetch_array($numz);
+echo $obj[0];
 
-while ($row = mysql_fetch_row($result))
+while ($object = mysql_fetch_object($result))
 {
 
-	echo "$row[0]<br>";
+	echo $object->date_expire . "<br />";
 
 }
 
+
+/*while ($row = mysql_fetch_array($result))
+{
+
+	echo $row['ID'] . "<br />";
+
+}
+*/
 
 //working date sort - expire 
 
